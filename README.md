@@ -3,6 +3,23 @@ Basic Nginx Reverse Proxy Docker Container
 
 Self-explanatory.
 
+## Usage
+
+```yaml
+version: '2'
+services:
+  proxy:
+    build: https://github.com/timlebrun/docker-nginx-proxy-cache.git
+    ports:
+      - 1312:80
+    environment:
+      NGINX_PROXY_PASS: https://upstream.timlebrun.fr
+      NGINX_PROXY_HOST: upstream.timlebrun.fr
+      NGINX_PROXY_TIMEOUT: 12 # default 90
+      NGINX_PROXY_REDIRECT: yes # default no
+	  # ...
+```
+
 ## Environment Variables
 
 `NGINX_PROXY_PASS` - The only required one. The URL of the service u want to proxy.
